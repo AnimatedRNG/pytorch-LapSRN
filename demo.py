@@ -28,7 +28,10 @@ cuda = opt.cuda
 if cuda and not torch.cuda.is_available():
     raise Exception("No GPU found, please run without --cuda")
 
-model = torch.load(opt.model)["model"]
+if not cuda:
+   model = torch.load(opt.model, map_location='cpu')["model"]
+else:
+   model = torch.load(opt.model)["model"]
 
 im_gt_y = sio.loadmat("Set5/" + opt.image + ".mat")['im_gt_y']
 im_b_y = sio.loadmat("Set5/" + opt.image + ".mat")['im_b_y']
