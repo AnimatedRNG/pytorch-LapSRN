@@ -74,15 +74,19 @@ print("PSNR_bicubic=", psnr_bicubic)
 print("It takes {}s for processing".format(elapsed_time))
 
 fig = plt.figure()
-ax = plt.subplot("131")
+ax = plt.subplot("141")
 ax.imshow(im_gt_y, cmap='gray')
 ax.set_title("GT")
 
-ax = plt.subplot("132")
+ax = plt.subplot("142")
+ax.imshow(im_l_y, cmap='gray')
+ax.set_title("Input(LR)")
+
+ax = plt.subplot("143")
 ax.imshow(im_b_y, cmap='gray')
 ax.set_title("Input(Bicubic)")
 
-ax = plt.subplot("133")
+ax = plt.subplot("144")
 ax.imshow(im_h_y, cmap='gray')
 ax.set_title("Output(LapSRN)")
 plt.show()
